@@ -1,2 +1,6 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 16afac666d7188cfa82802e827e3c777
+=======
+guid: 5155d83870f9ff8e885e319e254322a5
+>>>>>>> 03f0aef (add: estrutura básica de comportamento de inimigos e base de comportamento de inimigo que segue)
