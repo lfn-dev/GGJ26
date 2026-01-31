@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac1b4997d55694eada2a5e4f5831810a, type: 3}
-  m_Name: GreenEnemyObjectPool
+  m_Name: QuickEnemyObjectPool
   m_EditorClassIdentifier: 
-  prefabInstance: {fileID: 8061284210218972527, guid: 43c5fb806a2b97b53985a3767ef0b632, type: 3}
-  instancesCount: 100
+  prefabInstance: {fileID: 1116493209400582130, guid: 0a8f64b944ba0251bb113e7ecb0c5d33, type: 3}
+  instancesCount: 50

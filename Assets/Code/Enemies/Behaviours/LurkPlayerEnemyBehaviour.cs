@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Follow Player Enemy Behaviour", menuName = "Enemies Behaviour/Follow Player Behaviour")]
-public class FollowPlayerEnemyBehaviour : BaseEnemyBehaviour
+[CreateAssetMenu(fileName = "New Lurk Player Enemy Behaviour", menuName = "Enemies Behaviour/Lurk Player Behaviour")]
+public class LurkPlayerEnemyBehaviour : BaseEnemyBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float movementSpeed = 10f;
@@ -10,22 +10,26 @@ public class FollowPlayerEnemyBehaviour : BaseEnemyBehaviour
     [SerializeField] private float maxTimeToChangeRotation = 5f;
 
     [Header("Shoot Settings")]
-    [SerializeField] private float cooldownBetweenShoots = 1f;
+    [SerializeField] private float cooldownBetweenSpreads = 5f;
+    [SerializeField] private int projectilesAmount = 4;
+    [SerializeField] private float intervalBetweenShoots = 0.1f;
 
     private Transform target;
+    private float timeSinceLastShoot = 0f;
+    private float timeSinceLastSpread = 0f;
+    private int remainingProjectiles = 0;
     private Vector2 movementDirection;
     private Vector2 newMovementDirection;
-
-    private float rotateDirection = 1f;
-
-    private float timeSinceLastShot = 0f;
     private float timeToChangeRotation = 0f;
+    private float rotateDirection = 1f;
 
     public override void Initialize(Enemy enemy)
     {
         Enemy = enemy;
         target = FindFirstObjectByType<PlayerController>().transform;
-        timeSinceLastShot = cooldownBetweenShoots;
+        timeSinceLastShoot = intervalBetweenShoots;
+        timeSinceLastSpread = cooldownBetweenSpreads;
+        remainingProjectiles = 0;
     }
 
     public override void OnFixedUpdate()
@@ -34,7 +38,7 @@ public class FollowPlayerEnemyBehaviour : BaseEnemyBehaviour
         {
             return;
         }
-
+        
         Enemy.MovementController.Move(movementDirection * movementSpeed);
     }
 
@@ -51,6 +55,7 @@ public class FollowPlayerEnemyBehaviour : BaseEnemyBehaviour
             return;
         }
 
+        
         timeToChangeRotation -= Time.deltaTime;
 
         if(timeToChangeRotation <= 0f)
@@ -71,14 +76,32 @@ public class FollowPlayerEnemyBehaviour : BaseEnemyBehaviour
 
     private void ShootRoutine()
     {
-        timeSinceLastShot -= Time.deltaTime;
-        if (timeSinceLastShot <= 0f)
+        if (timeSinceLastSpread > 0f && remainingProjectiles == 0)
         {
-            timeSinceLastShot = cooldownBetweenShoots;
-
-            float angle = Mathf.Atan2(movementDirection.y, movementDirection.x) * Mathf.Rad2Deg;
-
-            Enemy.Shooter.Shoot(Enemy.Transform.position, angle);
+            timeSinceLastSpread -= Time.deltaTime;
+            if(timeSinceLastSpread <= 0f)
+            {
+                remainingProjectiles = projectilesAmount;
+            }
+            return;
         }
+
+        if (timeSinceLastShoot <= 0f)
+        {
+            timeSinceLastShoot = intervalBetweenShoots;
+            remainingProjectiles--;
+
+            Enemy.Shooter.Shoot(Enemy.Transform.position, 20f * remainingProjectiles);
+
+            if (remainingProjectiles == 0)
+            {
+                timeSinceLastSpread = cooldownBetweenSpreads;
+            }
+        }
+        else
+        {
+            timeSinceLastShoot -= Time.deltaTime;
+        }
+
     }
 }

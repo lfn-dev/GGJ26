@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPoolController : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<ObjectPoolData> objectPools;
     [SerializeField] private float spawnRange = 5f;
+    [SerializeField] private float timeBetweenSpawns = 50f;
 
     private readonly Dictionary<string, ObjectPoolData> instantiatedObjectPools = new();
 
@@ -34,12 +36,18 @@ public class ObjectPoolController : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
+        float angle = UnityEngine.Random.Range(1f, 360f);
+        Vector2 spawnPosition = new Vector2(
+            Mathf.Cos(angle * Mathf.Rad2Deg) * spawnRange,
+            Mathf.Sin(angle * Mathf.Rad2Deg) * spawnRange
+        );
+
         InstantiateObject(
-            objectPools[Random.Range(0, objectPools.Count)].PoolKey,
-            new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * spawnRange,
+            objectPools[UnityEngine.Random.Range(0, objectPools.Count)].PoolKey,
+            spawnPosition,
             Quaternion.identity
         );
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(timeBetweenSpawns);
         StartCoroutine(SpawnEnemies());
     }
 }

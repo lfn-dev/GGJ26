@@ -1,7 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
-public class GreenEnemy : BaseEnemy
+public class BasicEnemy : BaseEnemy
 {
     public override void Destroy()
     {
@@ -11,7 +10,6 @@ public class GreenEnemy : BaseEnemy
     public override void Instantiate()
     {
         base.Instantiate();
-        Debug.Log("Un que?");
-        Invoke("Destroy", 5f);
+        enabled = true;
     }
 }

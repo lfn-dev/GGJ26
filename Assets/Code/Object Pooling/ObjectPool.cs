@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "New Object Pool", menuName = "Game Data/Object Pool")]
 public class ObjectPool : ScriptableObject
@@ -15,6 +16,7 @@ public class ObjectPool : ScriptableObject
         {
             PoolableGameObject instance = Instantiate(prefabInstance);
             instance.transform.SetParent(instancesParent);
+            instance.Setup();
             instance.Disable();
             instances.Push(instance);
         }
@@ -39,6 +41,7 @@ public class ObjectPool : ScriptableObject
     private void OnInstanceDestroyed(PoolableGameObject instance)
     {
         instances.Push(instance);
+        instance.Disable();
         instance.OnDestroy -= OnInstanceDestroyed;
     }
 

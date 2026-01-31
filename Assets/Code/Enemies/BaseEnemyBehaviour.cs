@@ -2,13 +2,9 @@ using UnityEngine;
 
 public abstract class BaseEnemyBehaviour : ScriptableObject
 {
-    protected Enemy enemy;
+    protected Enemy Enemy;
 
-    public void Initialize(Enemy enemy)
-    {
-        this.enemy = enemy;
-    }
-
+    public abstract void Initialize(Enemy enemy);
     public abstract void OnUpdate();
     public abstract void OnFixedUpdate();
 }
