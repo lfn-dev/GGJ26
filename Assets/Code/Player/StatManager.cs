@@ -49,9 +49,5 @@ public class StatManager : MonoBehaviour
 
     public void AddStat(PlayerStats additionalStats)
     {
-        stats.health += additionalStats.health;
-        stats.movSpeed += additionalStats.movSpeed;
-        stats.atkSpeed += additionalStats.atkSpeed;
-        stats.atkDmg += additionalStats.atkDmg;
     }
 }
