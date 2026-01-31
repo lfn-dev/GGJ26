@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf22c55fa739f70b0babfa642da410e4, type: 3}
+  m_Name: Wave
+  m_EditorClassIdentifier: 
+  waveEnemies:
+  - objectPool: {fileID: 11400000, guid: fa185c08661b21504b5aefe1f7f187b1, type: 2}
+    cost: 1
+    spawnCooldown: 1
+  - objectPool: {fileID: 11400000, guid: 6abe3d52e02a6dcc6b097c4bd01f29bb, type: 2}
+    cost: 3
+    spawnCooldown: 4
+  - objectPool: {fileID: 11400000, guid: e3154cf16addaade985c9b697a29053e, type: 2}
+    cost: 7
+    spawnCooldown: 8
+  OnWaveStarted:
+    eventChannel: {fileID: 11400000, guid: 4f46d110135f5174397d1fecb906e58c, type: 2}
+  OnWaveEnded:
+    eventChannel: {fileID: 11400000, guid: d3bfc97ab2d3841bf9c2c8280421bfb9, type: 2}
