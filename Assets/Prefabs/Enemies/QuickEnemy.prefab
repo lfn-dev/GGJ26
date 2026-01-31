@@ -157,7 +157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7232338126989559452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4209b96b69b142b8f9489a506fbd93fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f8a83e46751f62218a3e3692514cff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
@@ -165,5 +165,5 @@ MonoBehaviour:
     movementController:
       rigidbody: {fileID: 463343844976090302}
     shooter:
-      projectilesObjectPool: {fileID: 11400000, guid: 6bc0bdaf24d7feb639aa3063aaa41e4e, type: 2}
-  behaviour: {fileID: 11400000, guid: f5dc14a225a5ae99cab9aa4c91f3d1e9, type: 2}
+      projectilesObjectPool: {fileID: 11400000, guid: a0c636591dcc68cc3b0bd2437f786402, type: 2}
+  behaviour: {fileID: 11400000, guid: 1233f5a3293ca4b329954dde235f9fd3, type: 2}

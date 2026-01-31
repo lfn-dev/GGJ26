@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb3cfcfffda1f9da79b9c83d2fb09a96, type: 3}
+  m_Script: {fileID: 11500000, guid: a4d3804181e569e49bb8f192959a4945, type: 3}
   m_Name: Spread Shoot Enemy Behaviour
   m_EditorClassIdentifier: 
-  timeBetweenDashes: 3
-  dashVelocity: 20
-  friction: 40
-  angleVariation: 45
-  projectilesAmount: 3
-  intervalBetweenShoots: 0.1
+  objectPools: []
+  spawnRange: 5
+  timeBetweenSpawns: 50

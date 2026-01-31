@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 197274141}
   - component: {fileID: 197274142}
   m_Layer: 0
-  m_Name: ObjectPoolManager
+  m_Name: WaveManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,21 +160,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 197274140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58a6945b11f2a1e11bbd8d7579c5f264, type: 3}
+  m_Script: {fileID: 11500000, guid: a8bfafbf8d05de62dad90427833003ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPools:
-  - poolKey: weak
-    objectPool: {fileID: 11400000, guid: 59b0cc8ba39d16774b387f6e9d0b00ad, type: 2}
-    instancesParent: {fileID: 197274141}
-  - poolKey: quick
-    objectPool: {fileID: 11400000, guid: 78afb82a17b9fda859f5d7768f12885b, type: 2}
-    instancesParent: {fileID: 197274141}
-  - poolKey: strong
-    objectPool: {fileID: 11400000, guid: cae9fa04c14678952ae71f665559dad5, type: 2}
-    instancesParent: {fileID: 197274141}
-  spawnRange: 22
-  timeBetweenSpawns: 6
+  waveRunner:
+    spawnRadius: 20
+  wave: {fileID: 11400000, guid: c55bc33928afdafd98fef518163c2543, type: 2}
 --- !u!1 &519297663
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,10 +640,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1517949935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f148d7c152560512a63595efb04d764, type: 3}
+  m_Script: {fileID: 11500000, guid: ef16f51cf36c772f2a6675cb493650e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPoolChannel: {fileID: 11400000, guid: 6bc0bdaf24d7feb639aa3063aaa41e4e, type: 2}
+  objectPoolChannel: {fileID: 11400000, guid: a0c636591dcc68cc3b0bd2437f786402, type: 2}
 --- !u!1 &2121512512
 GameObject:
   m_ObjectHideFlags: 0

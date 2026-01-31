@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86ccff45d7dd7663aaedbc8b1bcfe2bd, type: 3}
+  m_Script: {fileID: 11500000, guid: dae5be0d7dd88fcf9926e0e92b0eb480, type: 3}
   m_Name: Lurk Player Enemy Behaviour
   m_EditorClassIdentifier: 
-  movementSpeed: 3
-  minDistanceFromPlayer: 12
-  cooldownBetweenSpreads: 6
-  projectilesAmount: 18
-  intervalBetweenShoots: 0.2
+  movementSpeed: 10
+  minDistanceFromPlayer: 2
+  minTimeToChangeRotation: 1
+  maxTimeToChangeRotation: 5
+  cooldownBetweenSpreads: 5
+  projectilesAmount: 4
+  intervalBetweenShoots: 0.1

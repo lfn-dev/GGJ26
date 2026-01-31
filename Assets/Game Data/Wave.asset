@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Wave
   m_EditorClassIdentifier: 
   waveEnemies:
-  - objectPool: {fileID: 11400000, guid: fa185c08661b21504b5aefe1f7f187b1, type: 2}
+  - objectPool: {fileID: 11400000, guid: 9ccbbcea58d01d45487802d08e0cd491, type: 2}
     cost: 1
     spawnCooldown: 1
-  - objectPool: {fileID: 11400000, guid: 6abe3d52e02a6dcc6b097c4bd01f29bb, type: 2}
-    cost: 3
+  - objectPool: {fileID: 11400000, guid: a785cea36cab4489783e2be91e68c810, type: 2}
+    cost: 4
     spawnCooldown: 4
-  - objectPool: {fileID: 11400000, guid: e3154cf16addaade985c9b697a29053e, type: 2}
-    cost: 7
+  - objectPool: {fileID: 11400000, guid: 2212bf9515234d4e79b537de6537da88, type: 2}
+    cost: 13
     spawnCooldown: 8
   OnWaveStarted:
     eventChannel: {fileID: 11400000, guid: 4f46d110135f5174397d1fecb906e58c, type: 2}
