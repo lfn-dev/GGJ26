@@ -1,14 +1,14 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
 
-    enum PlayerState {Controllable, Dash};
+    public enum PlayerState {Controllable, Dash};
 
     private PlayerControls controls;
     private Vector2 moveInput;
-    private PlayerState state;
     private Camera mainCamera;
 
 
@@ -16,9 +16,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Vector3 lookDirection;
     private float angleInput;
     public Transform pointer;
-    private float dashTimeCount = 1.0f;
-    private Vector3 dashDestination;
-    private float lastAttackTime;
 
 
     //private bool flipped = false;
@@ -27,6 +24,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private MovementController movementController;
     [SerializeField] private PlayerStats stats;
     [SerializeField] private PlayerAnimationController playerAnimationController;
+    [SerializeField] private PlayerDash playerDash = null;
 
     private void Awake()
     {
@@ -52,9 +50,8 @@ public class PlayerController : MonoBehaviour, IDamageable
         mainCamera = Camera.main;
 
         angleInput = 0.0f;
-        lastAttackTime = Time.time;
-        dashDestination = transform.position;
-        state = PlayerState.Controllable;
+
+        playerDash??=gameObject.GetComponent<PlayerDash>();
     }
 
     private void OnEnable()
@@ -71,13 +68,12 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if(state == PlayerState.Controllable) Move();
+        if(getState() == PlayerState.Controllable) Move();
     }
 
     private void FixedUpdate()
     {
         Look();
-        Dash();
     }
 
     private void Move()
@@ -114,29 +110,14 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
     }
 
-    private void Dash()
-    {
-        if(dashTimeCount < 0.95f)
-        {
-            transform.position = Vector3.Lerp(transform.position, dashDestination, dashTimeCount);
-            
-            dashTimeCount += Time.deltaTime * stats.dashSpeed.value;
-        }
-        else
-        {
-            state = PlayerState.Controllable;
-        }
-    }
-
     private void Attack()
     {
-        if(Time.time - lastAttackTime > (1.0f/stats.atkSpeed.value))
-        {
-            dashTimeCount = 0.0f;
-            lastAttackTime = Time.time;
-            state = PlayerState.Dash;
-            dashDestination = transform.position + lookDirection.normalized * stats.dashDistance.value;
-        }
+        playerDash.Dash(lookDirection);
+    }
+
+    public PlayerState getState()
+    {
+        return playerDash.isDashing ? PlayerState.Dash : PlayerState.Controllable;  
     }
 
     public void DealDamage(int damageAmount)
