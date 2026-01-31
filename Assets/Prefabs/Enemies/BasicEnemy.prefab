@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 463343844976090302}
   - component: {fileID: 1116493209400582130}
   m_Layer: 0
-  m_Name: BlueEnemy
+  m_Name: BasicEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7232338126989559452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87db334430f63d0bda036aa1f6af36f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4209b96b69b142b8f9489a506fbd93fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy:
@@ -167,4 +167,3 @@ MonoBehaviour:
     shooter:
       projectilesObjectPool: {fileID: 11400000, guid: 6bc0bdaf24d7feb639aa3063aaa41e4e, type: 2}
   behaviour: {fileID: 11400000, guid: 1233f5a3293ca4b329954dde235f9fd3, type: 2}
-  body: {fileID: 3821766145868299853}

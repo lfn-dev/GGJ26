@@ -160,14 +160,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 197274140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4daa55b117b463537b2cbdf9b530169d, type: 3}
+  m_Script: {fileID: 11500000, guid: 58a6945b11f2a1e11bbd8d7579c5f264, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objectPools:
-  - poolKey: blue
-    objectPool: {fileID: 11400000, guid: fa185c08661b21504b5aefe1f7f187b1, type: 2}
+  - poolKey: weak
+    objectPool: {fileID: 11400000, guid: 59b0cc8ba39d16774b387f6e9d0b00ad, type: 2}
     instancesParent: {fileID: 197274141}
-  spawnRange: 12
+  - poolKey: quick
+    objectPool: {fileID: 11400000, guid: 78afb82a17b9fda859f5d7768f12885b, type: 2}
+    instancesParent: {fileID: 197274141}
+  - poolKey: strong
+    objectPool: {fileID: 11400000, guid: cae9fa04c14678952ae71f665559dad5, type: 2}
+    instancesParent: {fileID: 197274141}
+  spawnRange: 15
+  timeBetweenSpawns: 6
 --- !u!1 &519297663
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +368,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

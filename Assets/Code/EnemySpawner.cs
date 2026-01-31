@@ -7,6 +7,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private List<ObjectPoolData> objectPools;
     [SerializeField] private float spawnRange = 5f;
+    [SerializeField] private float timeBetweenSpawns = 50f;
 
     private readonly Dictionary<string, ObjectPoolData> instantiatedObjectPools = new();
 
@@ -46,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
             spawnPosition,
             Quaternion.identity
         );
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(timeBetweenSpawns);
         StartCoroutine(SpawnEnemies());
     }
 }

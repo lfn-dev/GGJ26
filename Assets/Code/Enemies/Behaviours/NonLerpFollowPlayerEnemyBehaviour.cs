@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Follow Player Enemy Behaviour", menuName = "Enemies Behaviour/Follow Player Behaviour")]
-public class FollowPlayerEnemyBehaviour : BaseEnemyBehaviour
+[CreateAssetMenu(fileName = "New Non Lerp Follow Player Enemy Behaviour", menuName = "Enemies Behaviour/Non Lerp Follow Player Behaviour")]
+public class NonLerpFollowPlayerEnemyBehaviour : BaseEnemyBehaviour
 {
     [SerializeField] private float movementSpeed = 10f;
     [SerializeField] private float cooldownBetweenShoots = 1f;
@@ -28,9 +28,6 @@ public class FollowPlayerEnemyBehaviour : BaseEnemyBehaviour
         if (Vector2.Distance(Enemy.Transform.position, target.position) >= minDistanceFromPlayer)
         {            
             Enemy.MovementController.Move(movementDirection * movementSpeed);
-        } else
-        {
-            Enemy.MovementController.Move(Vector2.zero);
         }
     }
 
@@ -41,7 +38,7 @@ public class FollowPlayerEnemyBehaviour : BaseEnemyBehaviour
             return;
         }
 
-        movementDirection = Vector2.Lerp(movementDirection, (target.position - Enemy.Transform.position).normalized, Time.deltaTime);
+        movementDirection = (target.position - Enemy.Transform.position).normalized;
         
         timeSinceLastShot -= Time.deltaTime; 
         if (timeSinceLastShot <= 0f)

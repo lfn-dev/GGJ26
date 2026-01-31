@@ -11,18 +11,5 @@ public class BasicEnemy : BaseEnemy
     {
         base.Instantiate();
         enabled = true;
-
-        Invoke("Destroy", 20f);
-    }
-
-    public override void Disable()
-    {
-        base.Instantiate();
-        enabled = false;
-    }
-
-    public override void Setup()
-    {
-
     }
 }

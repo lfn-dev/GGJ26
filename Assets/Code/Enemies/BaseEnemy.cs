@@ -18,6 +18,11 @@ public abstract class BaseEnemy : PoolableGameObject
         gameObject.SetActive(false);
     }
 
+    public override void Setup()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void Update()
     {
         runtimeBehaviour?.OnUpdate();

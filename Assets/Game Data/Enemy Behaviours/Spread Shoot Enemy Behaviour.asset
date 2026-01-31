@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64668f3b00ce3ef8bbc6f6f7bf69cf81, type: 3}
-  m_Name: Follow Player Enemy Behaviour
+  m_Script: {fileID: 11500000, guid: eb3cfcfffda1f9da79b9c83d2fb09a96, type: 3}
+  m_Name: Spread Shoot Enemy Behaviour
   m_EditorClassIdentifier: 
-  movementSpeed: 3
-  cooldownBetweenShoots: 1.2
+  timeBetweenDashes: 3
+  dashVelocity: 20
+  friction: 40
+  angleVariation: 45
+  projectilesAmount: 3
+  intervalBetweenShoots: 0.1
