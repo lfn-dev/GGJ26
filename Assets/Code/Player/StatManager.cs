@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class StatManager : MonoBehaviour
@@ -45,5 +46,13 @@ public class StatManager : MonoBehaviour
         else if(currentHealth > stats.health.max){
                 currentHealth = stats.health.max;
         }
+    }
+
+    public void AddStat(PlayerStats additionalStats)
+    {
+        stats.health += additionalStats.health;
+        stats.movSpeed += additionalStats.movSpeed;
+        stats.atkSpeed += additionalStats.atkSpeed;
+        stats.atkDmg += additionalStats.atkDmg;
     }
 }

@@ -9,5 +9,18 @@ public class PlayerStats : CharacterStats
     public Stat dashDistance;
     public Stat dashSpeed;
     public Stat turnSpeed;
+
+    public override string ToString()
+    {
+        Stat[] statList = new Stat[] { health, movSpeed, atkSpeed, atkDmg, dashDistance, dashSpeed, turnSpeed};
+        
+        string retString = "";
+        foreach (Stat st in statList)
+        {
+            retString += st.ToString();
+        }
+
+        return retString;
+    }
     
 }
