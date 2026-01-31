@@ -31,20 +31,13 @@ public class PlayerShoot : MonoBehaviour
     {
         for (int i = 0; i < stats.maxProjectile.value; i++)
         {
-            instance = projectilePrefab.Instantiate(
-                projectilePrefab,
-                spawnPosition.position,
-                Quaternion.identity,
-                spawnPosition
-            );
-
-            projectileQeue.addObj(instance);
+            projectileQeue.addObj(Instantiate(projectilePrefab,spawnPosition.position,Quaternion.identity));
         }
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        ProjectileQeue.UpdatePosition(spawnPosition.position);
+        projectileQeue.UpdatePosition(spawnPosition.position);
     }
 
     public void Shoot(Vector3 lookDirection)

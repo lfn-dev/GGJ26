@@ -9,8 +9,9 @@ public class ProjectileQeue
     List<float> timer = new List<float>();
     int index = 0;
     int maxIndex = 0;
+    float deltaPos=5.0f;
 
-    public float space = 1.0f;
+    public float space = 2.0f;
 
     public void addObj(GameObject obj)
     {
@@ -22,14 +23,17 @@ public class ProjectileQeue
 
     public void UpdatePosition(Vector3 position)
     {
-        float subset=1/maxIndex;
+        float subset=1.0f/maxIndex;
         float halfIndex = maxIndex/2;
         for (int i = 0; i < maxIndex; i++)
         {
             if (!isActive[i])
             {
                 float dx = position.x + (subset*(i-halfIndex));
-                gameObjects[i].transform.position = new Vector3(dx,position.y,position.z);
+                gameObjects[i].transform.position = Vector3.MoveTowards(
+                    gameObjects[i].transform.position,
+                    new Vector3(dx,position.y, position.z),
+                    deltaPos*Time.deltaTime);
             }
         }
     }
