@@ -43,4 +43,15 @@ public class Projectile : PoolableGameObject
             Destroy();
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        IDamageable hit = collider.gameObject.GetComponent<IDamageable>();
+
+        if (hit != null)
+        {
+            Destroy();
+            hit.DealDamage(1);
+        }
+    }
 }

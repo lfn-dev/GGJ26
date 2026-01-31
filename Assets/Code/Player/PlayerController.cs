@@ -1,13 +1,7 @@
-using System;
-using System.Drawing;
-using Unity.VisualScripting;
-using UnityEditor.Callbacks;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
 
     enum PlayerState {Controllable, Dash};
@@ -139,5 +133,15 @@ public class PlayerController : MonoBehaviour
             state = PlayerState.Dash;
             dashDestination = transform.position + lookDirection.normalized * stats.dashDistance.value;
         }
+    }
+
+    public void DealDamage(int damageAmount)
+    {
+        if (state == PlayerState.Dash)
+        {
+            return;
+        }
+
+        stats.health.value -= damageAmount;
     }
 }
