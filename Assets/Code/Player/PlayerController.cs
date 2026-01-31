@@ -8,17 +8,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
 
     [Header("Movement Settings")]
-    public float moveSpeed = 5f;
+    [SerializeField] private MovementController movementController;
+    [SerializeField] private CharacterStats stats;
 
     private void Awake()
     {
         // Initialize the PlayerControls instance
         controls = new PlayerControls();
-
-        if (TryGetComponent<CharacterStats>(out CharacterStats stats))
-        {
-            moveSpeed = stats.movSpeed;
-        }
         
         // Subscribe to the movement and jump actions
         controls.Player.Move.performed += ctx => moveInput = 
@@ -51,7 +47,6 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        // Apply horizontal movement based on input
-        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
+        movementController.Move(moveInput * stats.movSpeed);
     }
 }
