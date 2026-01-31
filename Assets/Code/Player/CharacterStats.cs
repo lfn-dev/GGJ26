@@ -9,19 +9,19 @@ public class CharacterStats : ScriptableObject
     public class Stat
     {
         
-        public int value;
-        public int min;
-        public int max;
+        public float value;
+        public float min;
+        public float max;
         
-        public Stat(int value, int min, int max)
+        public Stat(float value, float min, float max)
         {
             this.value=value;
             this.min=min;
             this.max=max;
         }
 
-        public void SetValue(int value){this.value=(int) Mathf.Clamp(value,this.min,this.max);}
-        public void AddValue(int value){this.value+=(int) Mathf.Clamp(value,this.min,this.max);}
+        public void SetValue(float value){this.value=Mathf.Clamp(value,this.min,this.max);}
+        public void AddValue(float value){this.value+=Mathf.Clamp(value,this.min,this.max);}
 
     }
 

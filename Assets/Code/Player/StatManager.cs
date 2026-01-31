@@ -4,7 +4,7 @@ public class StatManager : MonoBehaviour
 {
     [SerializeField] private CharacterStats stats;
 
-    public int currentHealth {get; private set;}
+    public float currentHealth {get; private set;}
 
     private float lastTime;
 
