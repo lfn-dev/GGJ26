@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1b4997d55694eada2a5e4f5831810a, type: 3}
   m_Name: ProjectileObjectPool
   m_EditorClassIdentifier: 
-  prefabInstance: {fileID: 6351137855959678305, guid: 412a45eaa86634e21b16463fde04665a, type: 3}
+  prefabInstance: {fileID: 6351137855959678305, guid: d2c6cdd3e0334be928c676c6ff9131e6, type: 3}
   instancesCount: 1000

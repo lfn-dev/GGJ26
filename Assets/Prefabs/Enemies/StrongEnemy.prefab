@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f8a83e46751f62218a3e3692514cff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnEnemyDefeated: {fileID: 11400000, guid: 868e8beec7d1e1b26ab53c6beba46693, type: 2}
   enemy:
     transform: {fileID: 5158280421805182907}
     movementController:

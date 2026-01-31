@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1b4997d55694eada2a5e4f5831810a, type: 3}
   m_Name: StrongEnemyObjectPool
   m_EditorClassIdentifier: 
-  prefabInstance: {fileID: 8202267005613684468, guid: 3df8e9dce3076c1ff886af528826cd1b, type: 3}
+  prefabInstance: {fileID: 8202267005613684468, guid: cd65b9aeb0bc39d37b5d884bff6f1cd0, type: 3}
   instancesCount: 50

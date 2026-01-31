@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class BaseEnemy : PoolableGameObject
 {
+    [SerializeField] private EventChannel OnEnemyDefeated;
     [SerializeField] private Enemy enemy;
     [SerializeField] private BaseEnemyBehaviour behaviour;
     private BaseEnemyBehaviour runtimeBehaviour;
@@ -21,6 +22,12 @@ public abstract class BaseEnemy : PoolableGameObject
     public override void Setup()
     {
         gameObject.SetActive(false);
+    }
+
+    public override void Destroy()
+    {
+        OnDestroy.Invoke(this);
+        OnEnemyDefeated.RaiseEvent();
     }
 
     private void Update()

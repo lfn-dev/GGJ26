@@ -45,7 +45,6 @@ public class WaveSettings : ScriptableObject
 
     public void FinishWave()
     {
-        Debug.Log("Wave Finished");
         OnWaveEnded?.RaiseEvent();
     }
 
@@ -65,8 +64,6 @@ public class WaveSettings : ScriptableObject
 
         enemiesSpawned++;
         currentPrice -= enemy.Cost;
-
-        Debug.Log("Current Price: " + currentPrice);
 
         return enemy;
     }
