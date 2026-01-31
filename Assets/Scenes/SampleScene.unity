@@ -173,7 +173,10 @@ MonoBehaviour:
   - poolKey: GreenEnemy
     objectPool: {fileID: 11400000, guid: 6abe3d52e02a6dcc6b097c4bd01f29bb, type: 2}
     instancesParent: {fileID: 197274141}
+<<<<<<< HEAD
   spawnRange: 5
+=======
+>>>>>>> 409506b (add: Estrutura de Object Pool)
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
