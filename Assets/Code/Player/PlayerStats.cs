@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerStats : CharacterStats
 {
-
     [Header("Player Specific Stats")]
     public Stat dashDistance;
     public Stat dashSpeed;

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae5be0d7dd88fcf9926e0e92b0eb480, type: 3}
   m_Name: Lurk Player Enemy Behaviour
   m_EditorClassIdentifier: 
-  movementSpeed: 10
-  minDistanceFromPlayer: 2
+  movementSpeed: 2
+  minDistanceFromPlayer: 10
   minTimeToChangeRotation: 1
   maxTimeToChangeRotation: 5
   cooldownBetweenSpreads: 5
-  projectilesAmount: 4
+  projectilesAmount: 36
   intervalBetweenShoots: 0.1

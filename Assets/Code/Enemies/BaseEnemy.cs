@@ -39,4 +39,14 @@ public abstract class BaseEnemy : PoolableGameObject
     {
         runtimeBehaviour?.OnFixedUpdate();
     }
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        IDamageable hit = collider.gameObject.GetComponent<IDamageable>();
+
+        if (hit != null)
+        {
+            hit.DealDamage(1);
+        }
+    }
 }

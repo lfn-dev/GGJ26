@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5158280421805182907}
   - component: {fileID: 6490864307554531745}
   - component: {fileID: 8202267005613684468}
+  - component: {fileID: 4881325000044112554}
   m_Layer: 0
   m_Name: StrongEnemy
   m_TagString: Untagged
@@ -80,7 +81,43 @@ MonoBehaviour:
       rigidbody: {fileID: 6490864307554531745}
     shooter:
       projectilesObjectPool: {fileID: 11400000, guid: a0c636591dcc68cc3b0bd2437f786402, type: 2}
-  behaviour: {fileID: 11400000, guid: 1233f5a3293ca4b329954dde235f9fd3, type: 2}
+  behaviour: {fileID: 11400000, guid: b3daf6447bdd5680faac20f08911e4a5, type: 2}
+--- !u!58 &4881325000044112554
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211866608526944134}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 2.3
 --- !u!1 &3285484955133875851
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +194,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4499503099449193857, guid: 82cc1205ffb2265fb8ec3bb7724116b4, type: 3}
+  m_Sprite: {fileID: -4499503099449193857, guid: 051afd800ac5cdd4fa9140a3abae0d9d, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -165,6 +202,6 @@ SpriteRenderer:
   m_Size: {x: 2.56, y: 2.26}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
