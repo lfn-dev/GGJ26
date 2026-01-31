@@ -7,7 +7,6 @@ public class MovementController
 
     public void Move(Vector2 direction)
     {
-        // Apply horizontal movement based on input
-        rigidbody.linearVelocity = new Vector2(direction.x, direction.y);
+        rigidbody.MovePosition(rigidbody.transform.position + new Vector3(direction.x, direction.y, 0f) * Time.fixedDeltaTime);
     }
 }
