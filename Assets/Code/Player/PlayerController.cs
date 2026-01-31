@@ -15,12 +15,12 @@ public class PlayerController : MonoBehaviour
     private PlayerControls controls;
     private Vector2 moveInput;
     private PlayerState state;
+    private Camera mainCamera;
 
 
     private Vector2 lookInput;
     private Vector3 lookDirection;
     private float angleInput;
-    private float inputDeadZone = 0.01f;
     public Transform pointer;
     private float turnTimeCount = 0.0f;
     private float dashTimeCount = 1.0f;
@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        mainCamera = Camera.main;
+
         angleInput = 0.0f;
         lastAttackTime = Time.time;
         dashDestination = transform.position;
@@ -90,24 +92,30 @@ public class PlayerController : MonoBehaviour
     }
     private void Look()
     {
-        if(pointer != null)
-        {    
-            if(lookInput.sqrMagnitude > inputDeadZone)
-            {
-                lookDirection = new Vector3(lookInput.x,lookInput.y,0);
-                angleInput = Mathf.Atan2(lookInput.y,lookInput.x) * Mathf.Rad2Deg;
-                turnTimeCount = 0.0f;
-            }
-            
-            
-            if (turnTimeCount < 0.95f){
-                pointer.rotation = Quaternion.Slerp(pointer.rotation, Quaternion.Euler(0,0,angleInput), turnTimeCount);
-                turnTimeCount += Time.fixedDeltaTime * stats.turnSpeed.value;
-            }
+        if (pointer == null) return;
+
+        // 1. Pega a posição do mouse na tela (pixels)
+        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+
+        // 2. Converte para posição no mundo (World Space)
+        // O 'z' é a distância da câmera até o plano do jogo (geralmente 10 ou -cam.z)
+        Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(mouseScreenPos.x, mouseScreenPos.y, -mainCamera.transform.position.z));
+        
+        // Garante que estamos trabalhando em 2D (Z=0)
+        mouseWorldPos.z = 0;
+
+        // 3. Calcula o vetor direção: Destino (Mouse) - Origem (Player)
+        Vector3 directionToMouse = (mouseWorldPos - transform.position).normalized;
+
+        // Se o mouse estiver exatamente em cima do player, evita rotação maluca
+        if (directionToMouse.sqrMagnitude > 0.001f)
+        {
+            lookDirection = directionToMouse;
+            angleInput = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
+            pointer.rotation = Quaternion.Euler(0, 0, angleInput);
         }
-
-
     }
+
     private void Dash()
     {
         if(dashTimeCount < 0.95f)
@@ -124,8 +132,6 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        Debug.Log(Time.time - lastAttackTime);
-        Debug.Log(60.0f/stats.atkSpeed.value);
         if(Time.time - lastAttackTime > (1.0f/stats.atkSpeed.value))
         {
             dashTimeCount = 0.0f;
