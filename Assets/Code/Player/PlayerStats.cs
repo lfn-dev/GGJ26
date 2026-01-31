@@ -9,6 +9,8 @@ public class PlayerStats : CharacterStats
     public Stat dashSpeed;
     public Stat turnSpeed;
 
+    public Stat maxProjectile;
+
     public override string ToString()
     {
         Stat[] statList = new Stat[] { health, movSpeed, atkSpeed, atkDmg, dashDistance, dashSpeed, turnSpeed};

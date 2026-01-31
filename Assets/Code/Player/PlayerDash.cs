@@ -17,7 +17,6 @@ public class PlayerDash : MonoBehaviour
     {
         dashTimeCount = 1.0f;
         lastAttackTime = Time.time;
-        stats ??= gameObject.GetComponent<PlayerStats>();
     }
 
     private void FixedUpdate()

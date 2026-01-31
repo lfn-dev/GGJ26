@@ -5,7 +5,11 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, IDamageable
 {
 
-    public enum PlayerState {Controllable, Dash};
+    public enum PlayerState {Controllable, Dashing, Shooting};
+    public enum PlayerMood {Happy, Sad};
+
+    [SerializeField]
+    private PlayerMood currentPlayerMood;
 
     private PlayerControls controls;
     private Vector2 moveInput;
@@ -25,6 +29,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private PlayerStats stats;
     [SerializeField] private PlayerAnimationController playerAnimationController;
     [SerializeField] private PlayerDash playerDash = null;
+    [SerializeField] private PlayerShoot playerShoot = null;
 
     private void Awake()
     {
@@ -52,6 +57,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         angleInput = 0.0f;
 
         playerDash??=gameObject.GetComponent<PlayerDash>();
+        playerShoot??=gameObject.GetComponent<PlayerShoot>();
     }
 
     private void OnEnable()
@@ -112,12 +118,23 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Attack()
     {
-        playerDash.Dash(lookDirection);
+        switch (currentPlayerMood)
+        {
+            case PlayerMood.Happy:
+                playerDash.Dash(lookDirection);
+                break;
+            case PlayerMood.Sad:
+                playerShoot.Shoot(lookDirection);
+                break;
+            default:
+                Debug.LogWarning($"PlayerMood '{currentPlayerMood}' não tem ataques associados.");
+                break;
+        }
     }
 
     public PlayerState getState()
     {
-        return playerDash.isDashing ? PlayerState.Dash : PlayerState.Controllable;  
+        return playerDash.isDashing ? PlayerState.Dashing : PlayerState.Controllable;  
     }
 
     public void DealDamage(int damageAmount)
