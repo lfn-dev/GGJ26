@@ -10,7 +10,6 @@ public class BlueEnemy : BaseEnemy
     public override void Instantiate()
     {
         base.Instantiate();
-        Debug.Log("Dame un grrr!");
-        Invoke("Destroy", 2f);
+        Invoke("Destroy", 5f);
     }
 }
