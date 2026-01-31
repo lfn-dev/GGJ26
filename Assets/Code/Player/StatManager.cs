@@ -4,7 +4,9 @@ public class StatManager : MonoBehaviour
 {
     [SerializeField] private CharacterStats stats;
 
-    private int currentHealth {public get; set;}
+    public int currentHealth {get; private set;}
+
+    private float lastTime;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,34 +16,34 @@ public class StatManager : MonoBehaviour
     }
 
     public void Hit(int value){
-        if(Time.time - lastTime > invencibleTime){
-            AddLife(-value);
+        if(Time.time - lastTime > stats.invencibleTime){
+            AddHealth(-value);
             
-            foreach (Animator anim in animators)
-            {
-                Console.Log("Hit");
-                //anim.SetTrigger("Hitted");
-            }
+            // foreach (Animator anim in animators)
+            // {
+            //     anim.SetTrigger("Hitted");
+            // }
 
+            Debug.Log("Hit");
             //AudioManager.Instance.PlayClip(playerHit);
 
             lastTime = Time.time;
         }
     }
 
-    public void AddLife(int amount){
+    public void AddHealth(int amount){
         currentHealth += amount;
-        if(currentHealth <= 0){
-            foreach (Animator anim in animators)
-            {
-                Console.Log("Dead");
-                //anim.SetTrigger("Dead");
-            }
+        if(currentHealth <= stats.health.min){
+            // foreach (Animator anim in animators)
+            // {
+            //     //anim.SetTrigger("Dead");
+            // }
 
+            Debug.Log("Dead");
             //StartCoroutine(LevelManager.Instance.EndGame());
         }
-        else if(currentHealth > stats.maxHealth){
-                currentHealth = stats.maxHealth;
+        else if(currentHealth > stats.health.max){
+                currentHealth = stats.health.max;
         }
     }
 }

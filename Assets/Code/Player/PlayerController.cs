@@ -47,6 +47,6 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        movementController.Move(moveInput * stats.movSpeed);
+        movementController.Move(moveInput * stats.movSpeed.value);
     }
 }
