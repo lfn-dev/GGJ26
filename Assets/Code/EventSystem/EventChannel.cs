@@ -9,7 +9,7 @@ public class EventChannel : ScriptableObject
 
     public void RaiseEvent()
     {
-        Event();
+        Event?.Invoke();
     }
 
     public void AddListener(Action action)
@@ -19,6 +19,6 @@ public class EventChannel : ScriptableObject
 
     public void RemoveListener(Action action)
     {
-        Event += action;
+        Event -= action;
     }
 }
