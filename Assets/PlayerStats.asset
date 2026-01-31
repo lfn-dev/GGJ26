@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec1091eb689ff9489b8b3f6635f7c20, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  health: 0
-  hasMaxLife: 0
-  maxLife: 0
-  invencibleTime: 0
+  health: 100
+  hasMaxLife: 1
+  maxLife: 100
+  invencibleTime: 1
   movSpeed: 5
   atkSpeed: 5
   atkDmg: 5
