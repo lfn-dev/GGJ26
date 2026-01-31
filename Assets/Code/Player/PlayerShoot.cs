@@ -4,73 +4,51 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
 
-    // private class ProjectileQeue
-    // {
-    //     List<GameObject> gameObjects = new List<GameObject>();
-    //     List<bool> isActive = new List<bool>();
-    //     List<float> timer = new List<float>();
-    //     int index = 0;
-    //     int maxIndex = 0;
+    private ProjectileQeue projectileQeue = new ProjectileQeue();
 
-    //     public addObj(GameObject obj)
-    //     {
-    //         gameObjects.Add(obj);
-    //         isActive.Add(false);
-    //         timer.Add(0.0f);
-    //         maxIndex++;
-    //     }
-    // }
+    [SerializeField]
+    public float atkSpeedMultiplier {get; private set;} = 0.8f;
 
-    // private ProjectileQeue projectileQeue = new ProjectileQeue();
+    [SerializeField]
+    public float dmgReduction  {get; private set;} = 0.75f;
 
-    // [SerializeField]
-    // public float atkSpeedMultiplier {get; private set;} = 0.8f;
+    public int projectiles = 1;
 
-    // [SerializeField]
-    // public float dmgReduction  {get; private set;} = 0.75f;
+    [Space]
 
-    // public int projectiles = 1;
+    [SerializeField]
+    private GameObject projectilePrefab;
+    public Transform spawnPosition;
 
-    // [Space]
+    [SerializeField]
+    private PlayerStats stats;
 
-    // [SerializeField]
-    // private GameObject projectilePrefab;
+    private Vector3 projectileDestination;
 
-    // [SerializeField]
-    // private PlayerStats stats;
+    public bool isShooting {get; private set;} = false;
 
-    // private Vector3 projectileDestination;
+    private void Start()
+    {
+        for (int i = 0; i < stats.maxProjectile.value; i++)
+        {
+            instance = projectilePrefab.Instantiate(
+                projectilePrefab,
+                spawnPosition.position,
+                Quaternion.identity,
+                spawnPosition
+            );
 
-    // public bool isShooting {get; private set;} = false;
+            projectileQeue.addObj(instance);
+        }
+    }
 
-    // private void Start()
-    // {
+    private void LateUpdate()
+    {
+        ProjectileQeue.UpdatePosition(spawnPosition.position);
+    }
 
-    //     dashTimeCount = 1.0f;
-    //     lastAttackTime = Time.time;
-    // }
-
-    // private void FixedUpdate()
-    // {
-    //     if(dashTimeCount < 0.95f)
-    //     {
-    //         transform.position = Vector3.Lerp(transform.position, dashDestination, dashTimeCount);
-    //         dashTimeCount += Time.deltaTime * stats.dashSpeed.value;
-    //     }
-    //     else
-    //     {
-    //         isDashing = false;
-    //     }
-    // }
-
-    // public void Shoot(Vector3 lookDirection)
-    // {
-    //     if(Time.time - lastAttackTime > (1.0f/stats.atkSpeed.value))
-    //     {
-    //         dashTimeCount = 0.0f;
-    //         lastAttackTime = Time.time;
-    //         isDashing = true;
-    //         dashDestination = transform.position + lookDirection.normalized * stats.dashDistance.value;
-    //     }
-    // }
+    public void Shoot(Vector3 lookDirection)
+    {
+        projectileQeue.Shoot(lookDirection);
+    }
 }
