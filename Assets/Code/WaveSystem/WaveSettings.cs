@@ -25,36 +25,49 @@ public class WaveSettings : ScriptableObject
         {
             waveEnemy.ObjectPool.Initialize(transform);
         }
+        currentWave = 0;
     }
 
     public void StartNewWave()
     {
         OnWaveStarted?.RaiseEvent();
         currentWave++;
+
         currentPrice = (int)Math.Pow(currentWave + 1, 2);
         enemiesSpawned = 0;
 
         foreach (WaveEnemy waveEnemy in waveEnemies)
         {
-            availableEnemies.Add(waveEnemy);
+            if (waveEnemy.Cost <= currentPrice)
+                availableEnemies.Add(waveEnemy);
         }
     }
 
     public void FinishWave()
     {
+        Debug.Log("Wave Finished");
         OnWaveEnded?.RaiseEvent();
     }
 
-    public void InstantiateEnemy(Vector3 position, Quaternion rotation)
+    public WaveEnemy GetEnemyToSpawn()
     {
+        if (availableEnemies.Count == 0)
+        {
+            return null;
+        }
         WaveEnemy enemy = availableEnemies[UnityEngine.Random.Range(0, availableEnemies.Count)];
-        enemy.ObjectPool.Instantiate(position, rotation);
-        enemiesSpawned++;
 
-        currentPrice -= enemy.Cost;
-        if (currentPrice - enemy.Cost < 0)
+        if (enemy.Cost > currentPrice)
         {
             availableEnemies.Remove(enemy);
+            return GetEnemyToSpawn();
         }
+
+        enemiesSpawned++;
+        currentPrice -= enemy.Cost;
+
+        Debug.Log("Current Price: " + currentPrice);
+
+        return enemy;
     }
 }
