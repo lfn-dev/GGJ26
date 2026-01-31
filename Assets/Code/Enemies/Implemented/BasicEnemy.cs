@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class BasicEnemy : BaseEnemy
 {
-    [SerializeField] private GameObject body;
-
     public override void Destroy()
     {
         OnDestroy.Invoke(this);
@@ -12,12 +10,19 @@ public class BasicEnemy : BaseEnemy
     public override void Instantiate()
     {
         base.Instantiate();
-        body.SetActive(true);
-        Invoke("Destroy", 5f);
+        enabled = true;
+
+        Invoke("Destroy", 20f);
     }
 
     public override void Disable()
     {
-        body.SetActive(false);
+        base.Instantiate();
+        enabled = false;
+    }
+
+    public override void Setup()
+    {
+
     }
 }

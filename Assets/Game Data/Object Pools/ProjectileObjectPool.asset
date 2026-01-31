@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ProjectileObjectPool
   m_EditorClassIdentifier: 
   prefabInstance: {fileID: 6351137855959678305, guid: 412a45eaa86634e21b16463fde04665a, type: 3}
-  instancesCount: 10
+  instancesCount: 1000

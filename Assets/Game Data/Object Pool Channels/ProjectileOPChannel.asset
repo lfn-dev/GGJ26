@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac1b4997d55694eada2a5e4f5831810a, type: 3}
-  m_Name: BasicEnemyObjectPool
+  m_Script: {fileID: 11500000, guid: 194378a85a029513c9fe0be8cb64b018, type: 3}
+  m_Name: ProjectileOPChannel
   m_EditorClassIdentifier: 
-  prefabInstance: {fileID: 1116493209400582130, guid: cf1faf56037840cc3be18e99e43458ec, type: 3}
-  instancesCount: 50
+  objectPool: {fileID: 11400000, guid: 4bee2c92e86e898e8b1ce39366b11b91, type: 2}
+  OnInstantiate:
+    m_PersistentCalls:
+      m_Calls: []
