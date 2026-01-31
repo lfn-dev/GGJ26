@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac1b4997d55694eada2a5e4f5831810a, type: 3}
-  m_Name: RedEnemyObjectPool
+  m_Name: ProjectileObjectPool
   m_EditorClassIdentifier: 
-  prefabInstance: {fileID: 4277712011139747390, guid: cc120f4c5fb9518e28834891d0dc971d, type: 3}
-  instancesCount: 100
+  prefabInstance: {fileID: 6351137855959678305, guid: 412a45eaa86634e21b16463fde04665a, type: 3}
+  instancesCount: 10

@@ -15,6 +15,7 @@ public class ObjectPool : ScriptableObject
         {
             PoolableGameObject instance = Instantiate(prefabInstance);
             instance.transform.SetParent(instancesParent);
+            instance.Setup();
             instance.Disable();
             instances.Push(instance);
         }

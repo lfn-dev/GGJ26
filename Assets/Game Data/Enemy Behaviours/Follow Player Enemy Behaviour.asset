@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64668f3b00ce3ef8bbc6f6f7bf69cf81, type: 3}
   m_Name: Follow Player Enemy Behaviour
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  Enemy:
+    transform: {fileID: 0}
+    movementController:
+      rigidbody: {fileID: 0}
+    shooter:
+      projectilesObjectPool: {fileID: 11400000, guid: 4bee2c92e86e898e8b1ce39366b11b91, type: 2}
+  movementSpeed: 1
+  cooldownBetweenShoots: 1.2

@@ -4,11 +4,13 @@ public abstract class BaseEnemy : PoolableGameObject
 {
     [SerializeField] private Enemy enemy;
     [SerializeField] private BaseEnemyBehaviour behaviour;
+    private BaseEnemyBehaviour runtimeBehaviour;
 
     public override void Instantiate()
     {
         gameObject.SetActive(true);
-        behaviour.Initialize(enemy);
+        runtimeBehaviour = Instantiate(behaviour);
+        runtimeBehaviour?.Initialize(enemy);
     }
 
     public override void Disable()
@@ -16,13 +18,18 @@ public abstract class BaseEnemy : PoolableGameObject
         gameObject.SetActive(false);
     }
 
+    public override void Setup()
+    {
+        enemy.Shooter.Initialize(transform);
+    }
+
     private void Update()
     {
-        behaviour?.OnUpdate();
+        runtimeBehaviour?.OnUpdate();
     }
 
     private void FixedUpdate()
     {
-        behaviour?.OnFixedUpdate();
+        runtimeBehaviour?.OnFixedUpdate();
     }
 }

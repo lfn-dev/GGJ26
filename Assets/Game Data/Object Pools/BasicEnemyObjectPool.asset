@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac1b4997d55694eada2a5e4f5831810a, type: 3}
-  m_Name: BlueEnemyObjectPool
+  m_Name: BasicEnemyObjectPool
   m_EditorClassIdentifier: 
   prefabInstance: {fileID: 1116493209400582130, guid: cf1faf56037840cc3be18e99e43458ec, type: 3}
   instancesCount: 100

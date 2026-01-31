@@ -3,10 +3,19 @@ using UnityEngine;
 [System.Serializable]
 public class Shooter
 {
-    [SerializeField] private ObjectPoolController projectilesObjectPool;
+    [SerializeField] private ObjectPool projectilesObjectPool;
 
-    public void Shoot(Transform origin, string projectileKey = "projectile")
+    private ObjectPool runtimeObjectPool;
+
+    public void Initialize(Transform parent)
     {
-        projectilesObjectPool.InstantiateObject(projectileKey, origin.position, origin.rotation);
+        runtimeObjectPool = Object.Instantiate(projectilesObjectPool);
+        runtimeObjectPool.Initialize(parent);
+    }
+
+    public void Shoot(Vector2 origin, float angle)
+    {
+        Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90f));
+        runtimeObjectPool.Instantiate(origin, rotation);
     }
 }
