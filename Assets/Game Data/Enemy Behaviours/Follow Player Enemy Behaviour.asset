@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Follow Player Enemy Behaviour
   m_EditorClassIdentifier: 
   movementSpeed: 3
-  cooldownBetweenShoots: 1.2
+  minDistanceFromPlayer: 6
+  minTimeToChangeRotation: 1
+  maxTimeToChangeRotation: 5
+  cooldownBetweenShoots: 3

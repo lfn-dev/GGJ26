@@ -6,6 +6,8 @@ public class LurkPlayerEnemyBehaviour : BaseEnemyBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float movementSpeed = 10f;
     [SerializeField] private float minDistanceFromPlayer = 2f;
+    [SerializeField] private float minTimeToChangeRotation = 1f;
+    [SerializeField] private float maxTimeToChangeRotation = 5f;
 
     [Header("Shoot Settings")]
     [SerializeField] private float cooldownBetweenSpreads = 5f;
@@ -17,6 +19,9 @@ public class LurkPlayerEnemyBehaviour : BaseEnemyBehaviour
     private float timeSinceLastSpread = 0f;
     private int remainingProjectiles = 0;
     private Vector2 movementDirection;
+    private Vector2 newMovementDirection;
+    private float timeToChangeRotation = 0f;
+    private float rotateDirection = 1f;
 
     public override void Initialize(Enemy enemy)
     {
@@ -33,15 +38,8 @@ public class LurkPlayerEnemyBehaviour : BaseEnemyBehaviour
         {
             return;
         }
-
-        if (Vector2.Distance(Enemy.Transform.position, target.position) >= minDistanceFromPlayer)
-        {
-            Enemy.MovementController.Move(movementDirection * movementSpeed);
-        }
-        else
-        {
-            Enemy.MovementController.Move(Vector2.zero);
-        }
+        
+        Enemy.MovementController.Move(movementDirection * movementSpeed);
     }
 
     public override void OnUpdate()
@@ -57,7 +55,23 @@ public class LurkPlayerEnemyBehaviour : BaseEnemyBehaviour
             return;
         }
 
-        movementDirection = Vector2.Lerp(movementDirection, (target.position - Enemy.Transform.position).normalized, Time.deltaTime);
+        
+        timeToChangeRotation -= Time.deltaTime;
+
+        if(timeToChangeRotation <= 0f)
+        {
+            rotateDirection *= -1f;
+            timeToChangeRotation = Random.Range(minTimeToChangeRotation, maxTimeToChangeRotation);
+        }
+        
+        newMovementDirection = (target.position - Enemy.Transform.position).normalized;
+
+        if (Vector2.Distance(Enemy.Transform.position, target.position) < minDistanceFromPlayer)
+        {
+            newMovementDirection = Vector2.Perpendicular(newMovementDirection) * rotateDirection;
+        }
+
+        movementDirection = Vector2.Lerp(movementDirection, newMovementDirection, Time.deltaTime);
     }
 
     private void ShootRoutine()

@@ -173,7 +173,7 @@ MonoBehaviour:
   - poolKey: strong
     objectPool: {fileID: 11400000, guid: cae9fa04c14678952ae71f665559dad5, type: 2}
     instancesParent: {fileID: 197274141}
-  spawnRange: 15
+  spawnRange: 22
   timeBetweenSpawns: 6
 --- !u!1 &519297663
 GameObject:
@@ -587,9 +587,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5095aa0d18f293469c58cd293d9fd1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointer: {fileID: 0}
   movementController:
     rigidbody: {fileID: 1488672353}
-  stats: {fileID: 11400000, guid: 9ea7e9e4ba0d1a1ada3902fe9fc85077, type: 2}
+  stats: {fileID: 11400000, guid: a1374f473702b8c4eb29edf914140a1a, type: 2}
 --- !u!4 &1488672355
 Transform:
   m_ObjectHideFlags: 0

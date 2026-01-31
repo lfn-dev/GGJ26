@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lurk Player Enemy Behaviour
   m_EditorClassIdentifier: 
   movementSpeed: 3
-  minDistanceFromPlayer: 10
+  minDistanceFromPlayer: 12
   cooldownBetweenSpreads: 6
   projectilesAmount: 18
   intervalBetweenShoots: 0.2
