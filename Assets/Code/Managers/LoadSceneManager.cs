@@ -12,8 +12,17 @@ public class LoadSceneManager : SingletonSingleScene<LoadSceneManager>
 
     public void LoadScene(string sceneName)
     {
-        if(sceneName == restartKeyWord) sceneName = SceneManager.GetActiveScene().name;
-        else if (sceneName == quitKeyword) Application.Quit();
+        if(sceneName == restartKeyWord){
+            sceneName = SceneManager.GetActiveScene().name;
+        }
+        else if (sceneName == quitKeyword){
+            #if UNITY_EDITOR
+                Debug.Log("Application.Quit()");
+                return;
+            #endif
+
+            Application.Quit();
+        }
         
         if(currentProgress >= 1){
             StartCoroutine(LoadSceneAsync(
