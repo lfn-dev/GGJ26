@@ -1,25 +1,20 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
 
-    public enum PlayerState {Controllable, Dashing, Shooting};
-    public enum PlayerMood {Happy, Sad};
-
-    [SerializeField]
-    private PlayerMood currentPlayerMood;
+    enum PlayerState {Controllable, Dash};
 
     private PlayerControls controls;
     private Vector2 moveInput;
+    private PlayerState state;
     private Camera mainCamera;
 
 
     private Vector2 lookInput;
     private Vector3 lookDirection;
     private float angleInput;
-    
     public Transform pointer;
     private float dashTimeCount = 1.0f;
     private Vector3 dashDestination;
@@ -32,10 +27,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private MovementController movementController;
     [SerializeField] private PlayerStats stats;
     [SerializeField] private PlayerAnimationController playerAnimationController;
-    [SerializeField] private PlayerDash playerDash = null;
-    [SerializeField] private PlayerShooter playerShooter;
-    [SerializeField] private EventRaiser OnGameOver;
-    [SerializeField] private AudioChannelTransmissor damageAudioChannel;
 
     private void Awake()
     {
@@ -61,7 +52,9 @@ public class PlayerController : MonoBehaviour, IDamageable
         mainCamera = Camera.main;
 
         angleInput = 0.0f;
-        stats.health.value = stats.initialHealth;
+        lastAttackTime = Time.time;
+        dashDestination = transform.position;
+        state = PlayerState.Controllable;
     }
 
     private void OnEnable()
@@ -78,12 +71,13 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if(getState() == PlayerState.Controllable) Move();
+        if(state == PlayerState.Controllable) Move();
     }
 
     private void FixedUpdate()
     {
         Look();
+        Dash();
     }
 
     private void Move()
@@ -115,53 +109,43 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (directionToMouse.sqrMagnitude > 0.001f)
         {
             lookDirection = directionToMouse;
-            angleInput = (Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg) - 90f;
+            angleInput = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
             pointer.rotation = Quaternion.Euler(0, 0, angleInput);
+        }
+    }
+
+    private void Dash()
+    {
+        if(dashTimeCount < 0.95f)
+        {
+            transform.position = Vector3.Lerp(transform.position, dashDestination, dashTimeCount);
+            
+            dashTimeCount += Time.deltaTime * stats.dashSpeed.value;
+        }
+        else
+        {
+            state = PlayerState.Controllable;
         }
     }
 
     private void Attack()
     {
-        switch (currentPlayerMood)
+        if(Time.time - lastAttackTime > (1.0f/stats.atkSpeed.value))
         {
-            case PlayerMood.Sad:
-                playerDash.Dash(lookDirection);
-                break;
-            case PlayerMood.Happy:
-                playerShooter.Shoot(pointer.position, pointer.rotation);
-                break;
-            default:
-                Debug.LogWarning($"PlayerMood '{currentPlayerMood}' não tem ataques associados.");
-                break;
+            dashTimeCount = 0.0f;
+            lastAttackTime = Time.time;
+            state = PlayerState.Dash;
+            dashDestination = transform.position + lookDirection.normalized * stats.dashDistance.value;
         }
-    }
-
-    public PlayerState getState()
-    {
-        return playerDash != null && playerDash.isDashing ? PlayerState.Dashing : PlayerState.Controllable;  
     }
 
     public void DealDamage(int damageAmount)
     {
-        if (getState() == PlayerState.Dashing)
+        if (state == PlayerState.Dash)
         {
             return;
         }
 
         stats.health.value -= damageAmount;
-        damageAudioChannel.PlaySound("player_damage");
-
-        if(stats.health.value <= 0)
-        {
-            OnGameOver.RaiseEvent();
-        }
-    }
-
-    public void SwapMood()
-    {
-        if (currentPlayerMood == PlayerMood.Sad)
-            currentPlayerMood = PlayerMood.Happy;
-        else
-            currentPlayerMood = PlayerMood.Sad;
     }
 }
