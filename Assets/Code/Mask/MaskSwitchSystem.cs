@@ -19,13 +19,13 @@ public class MaskSwitchSystem : MonoBehaviour
         maskMeter += amount;
         if (maskMeter >= 10f)
         {
+            maskMeter = 0f;
             maskUI.PlayAnimation();
         }
     }
 
     public void RaiseEvent()
     {
-        maskMeter = 0f;
         OnMaskSwitch.RaiseEvent();
         maskUI.SwapActiveMaskUI();
     }

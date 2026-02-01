@@ -19,6 +19,7 @@ public class MaskUI
     public void SwapActiveMaskUI()
     {
         activeMask.rectTransform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+        activeMask.fillAmount = 1f;
         if (activeMask == leftMask)
         {
             activeMask = rightMask;

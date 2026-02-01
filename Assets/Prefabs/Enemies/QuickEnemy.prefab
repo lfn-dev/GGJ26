@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5039204069752016414}
   - component: {fileID: 181343324858165967}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 463343844976090302}
   - component: {fileID: 1116493209400582130}
   - component: {fileID: 8560548969727138133}
+  - component: {fileID: 7997589885035587094}
   m_Layer: 0
   m_Name: QuickEnemy
   m_TagString: Untagged
@@ -213,6 +214,28 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0.04, y: 0.11}
   m_Radius: 0.32
+--- !u!95 &7997589885035587094
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7232338126989559452}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 289e69c3661aad4a2bd9843e8df6e0ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7575109852754147019
 GameObject:
   m_ObjectHideFlags: 0
