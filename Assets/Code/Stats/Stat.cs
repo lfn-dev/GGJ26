@@ -19,4 +19,17 @@ public class Stat
     public void SetValue(float value) { this.value = Mathf.Clamp(value, min, max); }
     public void AddValue(float value) { this.value += Mathf.Clamp(value, min, max); }
 
+    public bool NonZero(){return value != 0 || min != 0 || max != 0;}
+
+    public override string ToString()
+    {
+        string valString = ((value>0) ? "+":"") + value.ToString();
+        string valMin = ((min>0) ? "+":"") + min.ToString();
+        string valMax = ((max>0) ? "+":"") + max.ToString();
+        string fullStr = ((value != 0) ? valString : "") +
+        ((min != 0) ? " | MAX: " + valMin : "") + 
+        ((max != 0) ? " | MIN: " +  valMax : "");
+        return fullStr;
+    }
+
 }
