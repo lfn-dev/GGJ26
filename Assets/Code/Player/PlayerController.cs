@@ -21,7 +21,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     private float angleInput;
     
     public Transform pointer;
-    
+    private float dashTimeCount = 1.0f;
+    private Vector3 dashDestination;
+    private float lastAttackTime;
 
 
     //private bool flipped = false;

@@ -11,9 +11,14 @@ public class PlayerStats : CharacterStats
 
     public Stat shootsCooldown;
 
+    public Stat[] StatList()
+    {
+        return new Stat[] { health, movSpeed, atkSpeed, atkDmg, dashDistance, dashSpeed, turnSpeed};
+    }
+
     public override string ToString()
     {
-        Stat[] statList = new Stat[] { health, movSpeed, atkSpeed, atkDmg, dashDistance, dashSpeed, turnSpeed};
+        Stat[] statList = StatList();
         
         string retString = "";
         foreach (Stat st in statList)

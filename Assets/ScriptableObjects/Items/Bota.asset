@@ -10,42 +10,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b62487a81fb82b40b720152dff10b00, type: 3}
-  m_Name: VidaMaxima
+  m_Name: Bota
   m_EditorClassIdentifier: 
   health:
-    name: "Sa\xFAde"
-    value: 10
-    min: 0
-    max: 10
-  initialHealth: 100
-  invencibleTime: 1
-  movSpeed:
-    name: Vel. Mov.
+    name: 
     value: 0
     min: 0
     max: 0
+  initialHealth: 100
+  invencibleTime: 1
+  movSpeed:
+    name: 
+    value: 1
+    min: 0
+    max: 0
   atkSpeed:
-    name: Vel. Atq.
+    name: 
     value: 0
     min: 0
     max: 0
   atkDmg:
-    name: Dano
+    name: 
     value: 0
     min: 0
     max: 0
   dashDistance:
-    name: Dist. Impulso
+    name: 
     value: 0
     min: 0
     max: 0
   dashSpeed:
-    name: Vel. Impulso
+    name: 
     value: 0
     min: 0
     max: 0
   turnSpeed:
-    name: Vel. Mira
+    name: 
     value: 0
     min: 0
     max: 0
