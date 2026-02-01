@@ -83,6 +83,12 @@ MonoBehaviour:
     shooter:
       projectilesObjectPool: {fileID: 11400000, guid: a0c636591dcc68cc3b0bd2437f786402, type: 2}
   behaviour: {fileID: 11400000, guid: b3daf6447bdd5680faac20f08911e4a5, type: 2}
+  audioPlayer:
+    audioChannels:
+    - {fileID: 11400000, guid: eaedacda51b85ed92bba618491b94ef4, type: 2}
+    - {fileID: 11400000, guid: ba196aed677e748e6b7002398a42cf34, type: 2}
+  effectPlayer:
+    effectObjectPool: {fileID: 11400000, guid: 08ae45e4ffe238a56af18a42ac58456d, type: 2}
   health: 5
 --- !u!58 &4881325000044112554
 CircleCollider2D:

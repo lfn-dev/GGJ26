@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c6324a0bf0a1680b9a2ef3f3a014bb, type: 3}
+  m_Name: PlayerShoot
+  m_EditorClassIdentifier: 
+  channelName: shoot
+  audioGroup:
+    audios:
+    - {fileID: 8300000, guid: c653bc5c7b7675b5baf4e1ed8bdcf9f0, type: 3}
+    - {fileID: 8300000, guid: 9f207822132f4ab18a8d9454154abe5f, type: 3}
+    - {fileID: 8300000, guid: 39339009898a46605a23fc3a3b0d151a, type: 3}
+    - {fileID: 8300000, guid: 997583931c9826797a52e31fe04dc046, type: 3}
+    - {fileID: 8300000, guid: b3a990f18b9e3c0e0accbe7bdf786429, type: 3}

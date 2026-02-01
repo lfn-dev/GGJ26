@@ -11,7 +11,12 @@ public class BasicEnemy : BaseEnemy, IEnemyDamageable
 
         if(currentHealth <= 0)
         {
+            audioPlayer.PlaySound("death");
+            effectPlayer.PlayEffect(transform.position);
             Destroy();
+        } else
+        {
+            audioPlayer.PlaySound("damage");
         }
     }
 

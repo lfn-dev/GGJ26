@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private PlayerDash playerDash = null;
     [SerializeField] private PlayerShooter playerShooter;
     [SerializeField] private EventRaiser OnGameOver;
+    [SerializeField] private AudioChannelTransmissor damageAudioChannel;
 
     private void Awake()
     {
@@ -146,6 +147,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
 
         stats.health.value -= damageAmount;
+        damageAudioChannel.PlaySound("player_damage");
 
         if(stats.health.value <= 0)
         {

@@ -5,6 +5,7 @@ public class PlayerShooter : MonoBehaviour
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private ObjectPool projectileObjectPool;
     [SerializeField] private Transform poolParent;
+    [SerializeField] private AudioChannelTransmissor audioChannel;
 
     private float timeSinceLastShoot = 0f;
 
@@ -27,5 +28,6 @@ public class PlayerShooter : MonoBehaviour
 
         timeSinceLastShoot = playerStats.shootsCooldown.value;
         projectileObjectPool.Instantiate(origin, direction);
+        audioChannel.PlaySound("shoot");
     }
 }

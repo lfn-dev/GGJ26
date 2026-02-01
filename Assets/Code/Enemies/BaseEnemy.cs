@@ -5,6 +5,9 @@ public abstract class BaseEnemy : PoolableGameObject
     [SerializeField] private EventChannel OnEnemyDefeated;
     [SerializeField] private Enemy enemy;
     [SerializeField] private BaseEnemyBehaviour behaviour;
+
+    [SerializeField] protected AudioChannelTransmissor audioPlayer;
+    [SerializeField] protected EffectPlayer effectPlayer;
     private BaseEnemyBehaviour runtimeBehaviour;
 
     public override void Instantiate()

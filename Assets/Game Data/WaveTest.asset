@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaveTest
   m_EditorClassIdentifier: 
   waveEnemies:
-  - objectPool: {fileID: 11400000, guid: 9ccbbcea58d01d45487802d08e0cd491, type: 2}
+  - objectPool: {fileID: 11400000, guid: 2212bf9515234d4e79b537de6537da88, type: 2}
     cost: 1
     spawnCooldown: 1
   OnWaveStarted:

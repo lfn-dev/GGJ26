@@ -1,10 +1,11 @@
-using System;
 using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
 
     [SerializeField] private PlayerStats stats;
+    [SerializeField] private Transform body;
+    [SerializeField] private AudioChannelTransmissor audioChannel;
 
     private float dashTimeCount;
     private Vector3 dashDestination;
@@ -22,7 +23,7 @@ public class PlayerDash : MonoBehaviour
     {
         if(dashTimeCount < 0.95f)
         {
-            transform.position = Vector3.Lerp(transform.position, dashDestination, dashTimeCount);
+            body.transform.position = Vector3.Lerp(body.transform.position, dashDestination, dashTimeCount);
             dashTimeCount += Time.deltaTime * stats.dashSpeed.value;
         }
         else
@@ -38,7 +39,8 @@ public class PlayerDash : MonoBehaviour
             dashTimeCount = 0.0f;
             lastAttackTime = Time.time;
             isDashing = true;
-            dashDestination = transform.position + lookDirection.normalized * stats.dashDistance.value;
+            dashDestination = body.transform.position + lookDirection.normalized * stats.dashDistance.value;
+            audioChannel.PlaySound("dash");
         }
     }
 
