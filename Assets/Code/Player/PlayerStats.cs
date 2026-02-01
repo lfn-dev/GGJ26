@@ -9,8 +9,6 @@ public class PlayerStats : CharacterStats
     public Stat dashSpeed;
     public Stat turnSpeed;
 
-    public Stat shootsCooldown;
-
     public Stat[] StatList()
     {
         return new Stat[] { health, movSpeed, atkSpeed, atkDmg, dashDistance, dashSpeed, turnSpeed};
