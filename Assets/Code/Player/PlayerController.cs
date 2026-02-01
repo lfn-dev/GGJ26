@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Vector2 lookInput;
     private Vector3 lookDirection;
     private float angleInput;
+    
     public Transform pointer;
+    
 
 
     //private bool flipped = false;
@@ -29,7 +31,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private PlayerStats stats;
     [SerializeField] private PlayerAnimationController playerAnimationController;
     [SerializeField] private PlayerDash playerDash = null;
-    [SerializeField] private PlayerShoot playerShoot = null;
+    [SerializeField] private PlayerShooter playerShooter;
 
     private void Awake()
     {
@@ -55,9 +57,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         mainCamera = Camera.main;
 
         angleInput = 0.0f;
-
-        playerDash??=gameObject.GetComponent<PlayerDash>();
-        playerShoot??=gameObject.GetComponent<PlayerShoot>();
     }
 
     private void OnEnable()
@@ -111,7 +110,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (directionToMouse.sqrMagnitude > 0.001f)
         {
             lookDirection = directionToMouse;
-            angleInput = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
+            angleInput = (Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg) - 90f;
             pointer.rotation = Quaternion.Euler(0, 0, angleInput);
         }
     }
@@ -120,11 +119,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         switch (currentPlayerMood)
         {
-            case PlayerMood.Happy:
+            case PlayerMood.Sad:
                 playerDash.Dash(lookDirection);
                 break;
-            case PlayerMood.Sad:
-                playerShoot.Shoot(lookDirection);
+            case PlayerMood.Happy:
+                playerShooter.Shoot(pointer.position, pointer.rotation);
                 break;
             default:
                 Debug.LogWarning($"PlayerMood '{currentPlayerMood}' não tem ataques associados.");
@@ -134,12 +133,12 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public PlayerState getState()
     {
-        return playerDash.isDashing ? PlayerState.Dashing : PlayerState.Controllable;  
+        return playerDash != null && playerDash.isDashing ? PlayerState.Dashing : PlayerState.Controllable;  
     }
 
     public void DealDamage(int damageAmount)
     {
-        if (state == PlayerState.Dash)
+        if (getState() == PlayerState.Dashing)
         {
             return;
         }

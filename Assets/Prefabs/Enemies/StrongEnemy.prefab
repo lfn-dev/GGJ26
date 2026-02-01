@@ -83,6 +83,7 @@ MonoBehaviour:
     shooter:
       projectilesObjectPool: {fileID: 11400000, guid: a0c636591dcc68cc3b0bd2437f786402, type: 2}
   behaviour: {fileID: 11400000, guid: b3daf6447bdd5680faac20f08911e4a5, type: 2}
+  health: 5
 --- !u!58 &4881325000044112554
 CircleCollider2D:
   m_ObjectHideFlags: 0
