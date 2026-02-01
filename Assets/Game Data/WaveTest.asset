@@ -10,18 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf22c55fa739f70b0babfa642da410e4, type: 3}
-  m_Name: Wave
+  m_Name: WaveTest
   m_EditorClassIdentifier: 
   waveEnemies:
   - objectPool: {fileID: 11400000, guid: 9ccbbcea58d01d45487802d08e0cd491, type: 2}
     cost: 1
-    spawnCooldown: 0.5
-  - objectPool: {fileID: 11400000, guid: a785cea36cab4489783e2be91e68c810, type: 2}
-    cost: 5
-    spawnCooldown: 3
-  - objectPool: {fileID: 11400000, guid: 2212bf9515234d4e79b537de6537da88, type: 2}
-    cost: 13
-    spawnCooldown: 8
+    spawnCooldown: 1
   OnWaveStarted:
     eventChannel: {fileID: 11400000, guid: 4f46d110135f5174397d1fecb906e58c, type: 2}
   OnWaveEnded:

@@ -9,7 +9,7 @@ public class PlayerStats : CharacterStats
     public Stat dashSpeed;
     public Stat turnSpeed;
 
-    public Stat maxProjectile;
+    public Stat shootsCooldown;
 
     public override string ToString()
     {

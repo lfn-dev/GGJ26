@@ -10,7 +10,7 @@ public class WaveRunner
     {
         if (timeSinceLastSpawn > 0f)
         {
-            timeSinceLastSpawn -= Time.deltaTime;
+            timeSinceLastSpawn -= Time.deltaTime * (.8f + waveSettings.CurrentWave * .2f);
             return;
         }
 

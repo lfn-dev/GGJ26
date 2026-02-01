@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerShooter : MonoBehaviour
 {
-    [SerializeField] private float cooldownBetweenShoots = 0.2f;
+    [SerializeField] private PlayerStats playerStats;
     [SerializeField] private ObjectPool projectileObjectPool;
     [SerializeField] private Transform poolParent;
 
@@ -25,7 +25,7 @@ public class PlayerShooter : MonoBehaviour
             return;
         }
 
-        timeSinceLastShoot = cooldownBetweenShoots;
+        timeSinceLastShoot = playerStats.shootsCooldown.value;
         projectileObjectPool.Instantiate(origin, direction);
     }
 }

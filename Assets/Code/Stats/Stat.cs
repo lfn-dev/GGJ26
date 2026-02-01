@@ -17,6 +17,6 @@ public class Stat
     }
 
     public void SetValue(float value) { this.value = Mathf.Clamp(value, min, max); }
-    public void AddValue(float value) { this.value += Mathf.Clamp(value, min, max); }
+    public void AddValue(float value) { this.value += value; }
 
 }

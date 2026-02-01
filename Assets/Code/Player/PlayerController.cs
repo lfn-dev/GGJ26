@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private PlayerAnimationController playerAnimationController;
     [SerializeField] private PlayerDash playerDash = null;
     [SerializeField] private PlayerShooter playerShooter;
+    [SerializeField] private EventRaiser OnGameOver;
 
     private void Awake()
     {
@@ -57,6 +58,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         mainCamera = Camera.main;
 
         angleInput = 0.0f;
+        stats.health.value = stats.initialHealth;
     }
 
     private void OnEnable()
@@ -144,5 +146,18 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
 
         stats.health.value -= damageAmount;
+
+        if(stats.health.value <= 0)
+        {
+            OnGameOver.RaiseEvent();
+        }
+    }
+
+    public void SwapMood()
+    {
+        if (currentPlayerMood == PlayerMood.Sad)
+            currentPlayerMood = PlayerMood.Happy;
+        else
+            currentPlayerMood = PlayerMood.Sad;
     }
 }

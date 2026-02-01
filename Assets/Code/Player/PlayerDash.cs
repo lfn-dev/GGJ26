@@ -6,7 +6,6 @@ public class PlayerDash : MonoBehaviour
 
     [SerializeField] private PlayerStats stats;
 
-
     private float dashTimeCount;
     private Vector3 dashDestination;
     private float lastAttackTime;
@@ -40,6 +39,15 @@ public class PlayerDash : MonoBehaviour
             lastAttackTime = Time.time;
             isDashing = true;
             dashDestination = transform.position + lookDirection.normalized * stats.dashDistance.value;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        IEnemyDamageable enemy = collision.gameObject.GetComponent<IEnemyDamageable>();
+        if (enemy != null && isDashing)
+        {
+            enemy.DealDamage((int)stats.atkDmg.value);
         }
     }
 }
