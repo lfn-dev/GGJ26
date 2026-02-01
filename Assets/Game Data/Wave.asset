@@ -17,7 +17,7 @@ MonoBehaviour:
     cost: 1
     spawnCooldown: 1
   - objectPool: {fileID: 11400000, guid: a785cea36cab4489783e2be91e68c810, type: 2}
-    cost: 4
+    cost: 5
     spawnCooldown: 4
   - objectPool: {fileID: 11400000, guid: 2212bf9515234d4e79b537de6537da88, type: 2}
     cost: 13

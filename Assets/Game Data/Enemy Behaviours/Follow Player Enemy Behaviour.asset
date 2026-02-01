@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 3
   minDistanceFromPlayer: 6
-  minTimeToChangeRotation: 1
-  maxTimeToChangeRotation: 5
+  minTimeToChangeRotation: 5
+  maxTimeToChangeRotation: 6
   cooldownBetweenShoots: 3

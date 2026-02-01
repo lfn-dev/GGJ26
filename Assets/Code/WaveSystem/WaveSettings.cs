@@ -33,7 +33,7 @@ public class WaveSettings : ScriptableObject
         OnWaveStarted?.RaiseEvent();
         currentWave++;
 
-        currentPrice = 9999999;//(int)Math.Pow(currentWave + 1, 2);
+        currentPrice = 99999;//(int)Math.Pow(currentWave + 1, 2);
         enemiesSpawned = 0;
 
         foreach (WaveEnemy waveEnemy in waveEnemies)

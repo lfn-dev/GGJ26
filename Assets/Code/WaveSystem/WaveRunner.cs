@@ -23,7 +23,13 @@ public class WaveRunner
 
         timeSinceLastSpawn = enemy.SpawnCooldown;
 
-        Vector2 spawnPosition = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * spawnRadius;
+        float angle = Random.Range(1f, 360f);
+
+        Vector2 spawnPosition = new Vector2(
+            Mathf.Cos(angle * Mathf.Deg2Rad),
+            Mathf.Sin(angle * Mathf.Deg2Rad))
+        * spawnRadius;
+        
         enemy.ObjectPool.Instantiate(spawnPosition, Quaternion.identity);
     }
 }

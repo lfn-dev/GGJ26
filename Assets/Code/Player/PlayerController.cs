@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Header("Movement Settings")]
     [SerializeField] private MovementController movementController;
     [SerializeField] private PlayerStats stats;
+    [SerializeField] private PlayerAnimationController playerAnimationController;
 
     private void Awake()
     {
@@ -83,6 +84,10 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void Move()
     {
         movementController.Move(moveInput * stats.movSpeed.value);
+        if(moveInput.x != 0f)
+        {
+            playerAnimationController.Flip(moveInput.x < 0f);            
+        }
     }
     private void Look()
     {
